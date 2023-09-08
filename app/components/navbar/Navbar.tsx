@@ -1,6 +1,8 @@
 import React from 'react'
 import Container from '../Container'
 import Logo from './Logo'
+import Search from './Search'
+import Usermenu from './Usermenu'
 const Navbar = () => {
   return (
     <div className=' fixed w-full bg-white z-10 shadow-sm'>
@@ -21,6 +23,8 @@ const Navbar = () => {
               '
              >
                 <Logo />
+                <Search />
+                <Usermenu />
              </div>
            </Container>
         </div>
