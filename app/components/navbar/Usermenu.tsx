@@ -75,7 +75,7 @@ const Usermenu = () => {
             <>
              <MenuItem 
               onClick={registerModal.onOpen}
-              label="Login"
+              label="Sign up"
              />
             </>
            </div>
