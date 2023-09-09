@@ -73,7 +73,7 @@ const Modal: React.FC<ModalProps> = ({
      inset-0 z-50 
      outline-none
       focus:outline-none
-       bg-neutral-800/50
+       bg-rose-800/50
     "
       >
         <div
