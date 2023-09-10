@@ -1,17 +1,21 @@
 "use client";
-import React ,{useState,useCallback}from "react";
+import React, { useState, useCallback } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-const Usermenu = () => {
-    const [isOpen, setIsOpen] = useState(false)
-    const loginModal = useLoginModal()
-   const registerModal = useRegisterModal()
-    const toggleOpen = useCallback(()=>{
-        setIsOpen((value)=>!value)
-    },[])
+import { User } from "@prisma/client";
+interface MenuItemProps {
+  currentUser: User;
+}
+const Usermenu: React.FC<MenuItemProps> = ({ currentUser }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
+  const toggleOpen = useCallback(() => {
+    setIsOpen((value) => !value);
+  }, []);
   return (
     <div className=" relative">
       <div className=" flex flex-row  items-center gap-3">
@@ -52,15 +56,14 @@ const Usermenu = () => {
         >
           <AiOutlineMenu />
           <div className=" hidden md:block">
-          <Avatar />
-        </div>
+            <Avatar />
+          </div>
         </div>
       </div>
 
       {isOpen && (
-
         <div
-         className="
+          className="
           absolute
           rounded-xl
           shadow-md
@@ -73,18 +76,20 @@ const Usermenu = () => {
           text-sm
          "
         >
-           <div className=" flex flex-col cursor-pointer">
-            <>
-             <MenuItem 
-              onClick={registerModal.onOpen}
-              label="Sign up"
-             />
-              <MenuItem 
-              onClick={loginModal.onOpen}
-              label="Login"
-             />
-            </>
-           </div>
+          <div className=" flex flex-col cursor-pointer">
+            {currentUser ? (
+              <>
+                <MenuItem onClick={() => {}} label="Dates" />
+                <MenuItem onClick={() => {}} label="Information" />
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+
+                <MenuItem onClick={loginModal.onOpen} label="Login" />
+              </>
+            )}
+          </div>
         </div>
       )}
     </div>
