@@ -5,9 +5,11 @@ import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import { signOut } from "next-auth/react";
 import { User } from "@prisma/client";
+import { SafeUser } from "@/app/types";
 interface MenuItemProps {
-  currentUser: User;
+  currentUser: SafeUser | null;
 }
 const Usermenu: React.FC<MenuItemProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,7 +58,7 @@ const Usermenu: React.FC<MenuItemProps> = ({ currentUser }) => {
         >
           <AiOutlineMenu />
           <div className=" hidden md:block">
-            <Avatar />
+            <Avatar src={currentUser?.image} />
           </div>
         </div>
       </div>
@@ -81,6 +83,10 @@ const Usermenu: React.FC<MenuItemProps> = ({ currentUser }) => {
               <>
                 <MenuItem onClick={() => {}} label="Dates" />
                 <MenuItem onClick={() => {}} label="Information" />
+                <MenuItem onClick={() => {}} label="My Trips" />
+                <MenuItem onClick={() => {}} label="Properties" />
+                <hr />
+                <MenuItem onClick={() => {signOut()}} label="Logout" />
               </>
             ) : (
               <>
