@@ -3,6 +3,7 @@ import Container from '../Container'
 import Logo from './Logo'
 import Search from './Search'
 import Usermenu from './Usermenu'
+import Categories from './Categories'
 import { User } from '@prisma/client'
 import { SafeUser } from '@/app/types'
 interface NavbarProps{
@@ -37,6 +38,7 @@ const Navbar:React.FC<NavbarProps> = ({
              </div>
            </Container>
         </div>
+        <Categories />
     </div>
   )
 }
