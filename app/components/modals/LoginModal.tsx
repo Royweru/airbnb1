@@ -19,8 +19,14 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 const LoginModal = () => {
   
   const loginModal = useLoginModal()
+  const registerModal = useRegisterModal()
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false);
+
+  const toogle = useCallback(()=>{
+      loginModal.onClose(),
+      registerModal.onOpen()
+  },[loginModal,registerModal])
 
   const {
     register,   
@@ -104,12 +110,12 @@ const LoginModal = () => {
         >
          <div className=" flex flex-row items-center">
             <div>
-              Already have an account?
+              First time using Airbnb?
             </div>
             <div
-            onClick={loginModal.onClose} 
+            onClick={toogle} 
             className=" text-neutral-800 cursor-pointer hover:underline">
-             Log in
+             Sign Up
             </div>
 
         </div>   

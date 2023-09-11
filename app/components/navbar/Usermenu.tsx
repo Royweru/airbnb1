@@ -6,8 +6,8 @@ import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import { signOut } from "next-auth/react";
-import { User } from "@prisma/client";
 import { SafeUser } from "@/app/types";
+import useRentModal from "@/app/hooks/useRentModal";
 interface MenuItemProps {
   currentUser: SafeUser | null;
 }
@@ -15,14 +15,24 @@ const Usermenu: React.FC<MenuItemProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+  const rentModal = useRentModal()
+
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
   }, []);
+
+  const onRent = useCallback(()=>{
+    if(!currentUser){
+      return loginModal.onOpen()
+    }
+
+    rentModal.onOpen()
+  },[currentUser,loginModal,rentModal])
   return (
     <div className=" relative">
       <div className=" flex flex-row  items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className=" 
             hidden
             md:block
@@ -81,10 +91,11 @@ const Usermenu: React.FC<MenuItemProps> = ({ currentUser }) => {
           <div className=" flex flex-col cursor-pointer">
             {currentUser ? (
               <>
-                <MenuItem onClick={() => {}} label="Dates" />
-                <MenuItem onClick={() => {}} label="Information" />
-                <MenuItem onClick={() => {}} label="My Trips" />
-                <MenuItem onClick={() => {}} label="Properties" />
+                <MenuItem onClick={() => {}} label="My trips" />
+                <MenuItem onClick={() => {}} label="My favourites" />
+                <MenuItem onClick={() => {}} label="My reservations" />
+                <MenuItem onClick={() => {}} label="My Properties" />
+                <MenuItem onClick={()=>{rentModal.onOpen()}} label="Airbnb my home" />
                 <hr />
                 <MenuItem onClick={() => {signOut()}} label="Logout" />
               </>
