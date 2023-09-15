@@ -32,7 +32,11 @@ export default async function RootLayout({
          currentUser = {currentUser}
         />
       </Clientonly>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="pb-20 pt-28">
+        {children}
+        </div>
+        </body>
     </html>
   );
 }
