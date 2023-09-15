@@ -20,13 +20,13 @@ const useFavorite = ({
     const router = useRouter()
     const loginModal = useLoginModal()
 
-    const hasFavorited = useMemo(()=>{
+    const hasFavorited:any = useMemo(()=>{
         const list = currentUser?.favouriteIds||[]
         return list.includes(listingId)
     }
     ,[currentUser,listingId])
 
-    const toogleFavorite = useCallback(async (e:React.MouseEvent<HTMLDivElement>) => {
+    const toogleFavorite:any = useCallback(async (e:React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation();
         if(!currentUser){
             return loginModal.onOpen()
@@ -57,3 +57,5 @@ const useFavorite = ({
     ])
 }
 export default  useFavorite
+
+
