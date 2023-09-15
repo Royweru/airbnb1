@@ -3,8 +3,10 @@ import Clientonly from './components/Clientonly'
 import EmptyState from './components/EmptyState'
 import getListings from '@/actions/getListings'
 import ListingCard from './components/listings/ListingCard'
+import getCurrentUser from '@/session/GetCurrentUser'
 export default async function Home() {
 
+  const currentUser = getCurrentUser()
   const listings = await getListings()
   const isEmpty = true
 
@@ -33,6 +35,7 @@ export default async function Home() {
           <ListingCard 
            key ={listing.id}
            data = {listing}
+           currentUser={currentUser}
           />
         ))}
       </div>
