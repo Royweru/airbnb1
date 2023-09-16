@@ -6,9 +6,9 @@ import ListingCard from './components/listings/ListingCard'
 import getCurrentUser from '@/session/GetCurrentUser'
 export default async function Home() {
 
-  const currentUser = getCurrentUser()
+  const currentUser = await getCurrentUser()
   const listings = await getListings()
-  const isEmpty = true
+
 
   if(listings.length === 0){
     return(
