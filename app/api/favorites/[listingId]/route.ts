@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 import getCurrentUser from "@/session/GetCurrentUser";
 import prisma from "@/libs/prismadb";
-import { threadId } from "worker_threads";
+
 
 interface IParams {
   listingId?: string;
@@ -28,7 +28,7 @@ export async function POST(request: Request, { params }: { params: IParams }) {
       id: currentUser.id,
     },
     data: {
-      favouriteIds,
+      favouriteIds
     },
   });
   return NextResponse.json(user);
@@ -53,7 +53,7 @@ export async function DELETE(
 
   favouriteIds = favouriteIds.filter((id) => id !== listingId);
 
-  const user = prisma.user.update({
+  const user = await prisma.user.update({
     where: {
       id: currentUser.id,
     },
