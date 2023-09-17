@@ -1,6 +1,4 @@
-
-
-import getListingById from '@/actions/getListingById'
+import getListingById from '@/actions/GetListingById'
 import Clientonly from '@/app/components/Clientonly'
 import EmptyState from '@/app/components/EmptyState'
 
