@@ -3,7 +3,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
 interface ModalProps {
-  isOpen?: string;
+  isOpen?: boolean;
   onClose: () => void;
   onSubmit: () => void;
   title?: string;
