@@ -6,7 +6,7 @@ import ListingCard from './components/listings/ListingCard'
 import getCurrentUser from '@/session/GetCurrentUser'
 export default async function Home() {
 
- const currentUser = getCurrentUser()
+ const currentUser = await getCurrentUser()
   const listings = await getListings()
 
 
@@ -18,7 +18,9 @@ export default async function Home() {
     )
   }
   return (
-    <Clientonly>
+    
+   <>
+   <Clientonly>
      <main className="flex min-h-screen flex-col  justify-between">
       <div className='
        pt-24
@@ -41,6 +43,6 @@ export default async function Home() {
       </div>
     </main>
     </Clientonly>
-
+   </>
   )
 }
