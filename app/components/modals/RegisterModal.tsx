@@ -96,7 +96,7 @@ const RegisterModal = () => {
          outline
          label="Continue with GitHub"
          icon={AiFillGithub}
-         onClick={()=>{signIn('google')}}
+         onClick={()=>{signIn('github')}}
          />
         <div 
          className="

@@ -17,9 +17,17 @@ const Calender:React.FC<CalenderProps> = ({
     disabledDates
 }) => {
   return (
-  <>
-  
-  </>
+ <DateRange
+  rangeColors={["#262626"]}
+  ranges={[value]}
+  disabledDates={disabledDates}
+  date={new Date()}
+  direction='vertical'
+  showDateDisplay={false}
+  minDate={new Date()}
+  onChange={onChange}
+
+ />
   )
 }
 
