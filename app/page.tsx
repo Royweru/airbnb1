@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import Clientonly from './components/Clientonly'
 import EmptyState from './components/EmptyState'
 import getListings from '@/actions/getListings'
@@ -10,7 +10,7 @@ export default async function Home() {
   const listings = await getListings()
 
 
-  if(listings.length === 0){
+  if(listings.length ===0){
     return(
       <Clientonly>
         <EmptyState showReset />
