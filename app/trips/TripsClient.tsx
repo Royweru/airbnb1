@@ -1,7 +1,7 @@
 'use client'
 import React, { useCallback, useState } from 'react'
 import { SafeReservation, SafeUser } from '../types'
-import { Container } from 'postcss'
+import Container from '../components/Container'
 import Heading from '../components/Heading'
 import{useRouter} from 'next/navigation'
 import axios from 'axios'

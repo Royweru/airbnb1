@@ -46,4 +46,4 @@ const TripsPage =async () => {
     )
 }
 
-export default TripsClient
+export default TripsPage

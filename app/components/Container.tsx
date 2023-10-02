@@ -1,4 +1,5 @@
-import React, { Children } from "react";
+'use clients'
+import React from "react";
 interface ContainerProps {
   children: React.ReactNode;
 }
