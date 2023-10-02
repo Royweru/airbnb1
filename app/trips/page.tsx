@@ -35,7 +35,7 @@ const TripsPage =async () => {
             </Clientonly>
         )
     }
-  console.log(reservations)
+  
     return(
         <Clientonly>
             <TripsClient

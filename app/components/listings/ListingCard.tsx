@@ -14,7 +14,7 @@ import Button from "../Button";
 
 interface ListingCardProps {
   data: SafeListing;
-  currentUser:SafeUser | null;
+  currentUser: SafeUser | null;
   reservation?: SafeReservation;
   onAction?: (id: string) => void;
   disabled?: boolean;
@@ -61,8 +61,16 @@ const ListingCard: React.FC<ListingCardProps> = ({
     const start = new Date(reservation.startDate);
     const end = new Date(reservation.endDate);
 
-    const startFormatted = start.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-const endFormatted = end.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    const startFormatted = start.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+    const endFormatted = end.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
 
     return `${startFormatted} -${endFormatted}`;
   }, [reservation]);
@@ -98,27 +106,23 @@ const endFormatted = end.toLocaleDateString('en-US', { year: 'numeric', month: '
           </div>
         </div>
         <div className=" font-semibold text-lg">
-            {location?.region},{location?.label}
+          {location?.region},{location?.label}
         </div>
         <div className=" font-light text-neutral-500">
           {reservationDate || data.category}
         </div>
 
         <div className="flex flex-row items-center gap-1">
-            <div className=" font-semibold">
-                ${price}
-            </div>
-            {!reservation &&(
-                <div className=" font-light"> night</div>
-            )}
-            {onAction && actionLabel &&(
-                <Button
-                  disabled={disabled}
-                  small
-                  label={actionLabel}
-                  onClick={handleCancel}
-                />
-            )}
+          <div className=" font-semibold">${price}</div>
+          {!reservation && <div className=" font-light"> night</div>}
+          {onAction && actionLabel && (
+            <Button
+              disabled={disabled}
+              small
+              label={actionLabel}
+              onClick={handleCancel}
+            />
+          )}
         </div>
       </div>
     </div>
