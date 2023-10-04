@@ -9,6 +9,7 @@ import LoginModal from "./components/modals/LoginModal";
 import RentModal from "./components/modals/RentModal";
 
 import getCurrentUser from "@/session/GetCurrentUser";
+import SearchModal from "./components/modals/SearchModal";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,6 +26,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <Clientonly>
+        <SearchModal />
         <RentModal />
         <LoginModal />
         <RegisterModal/>
