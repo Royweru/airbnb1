@@ -26,7 +26,7 @@ const Search = () => {
   if(startDate && endDate){
     const start = new Date(startDate)
     const end = new Date(endDate)
-    let diff = differenceInDays(start,end)
+    let diff = differenceInDays(end,start)
     if(diff===0){
       diff=1
     }
