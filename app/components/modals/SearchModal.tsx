@@ -10,6 +10,8 @@ import qs from 'query-string'
 import CountrySelect, { CountrySelectValue } from '../inputs/CountrySelect'
 import { formatISO } from 'date-fns'
 import Heading from '../Heading'
+import Calender from '../inputs/Calender'
+import Counter from '../inputs/Counter'
 enum STEPS{
     LOCATION=0,
     DATE=1,
@@ -36,12 +38,18 @@ const SearchModal = () => {
     }),[location])
 
     const onBack = useCallback(()=>{
-        setStep((value)=>value+1)
-    },[])
-    const onNext = useCallback(()=>{
         setStep((value)=>value-1)
     },[])
+    const onNext = useCallback(()=>{
+        setStep((value)=>value+1)
+    },[])
 
+    const actionLabel = useMemo(()=>{
+        if(step === STEPS.INFO){
+            return 'SEARCH'
+        }
+        return 'NEXT'
+     },[step])
     const onSubmit = useCallback(async()=>{
         if(step !== STEPS.INFO){
             return onNext();
@@ -66,7 +74,7 @@ const SearchModal = () => {
             updatedQuery.endDate = formatISO(dateRange.endDate)
         }
 
-        const url = qs.stringify({
+        const url = qs.stringifyUrl({
             url:'/',
             query:updatedQuery
         },{skipNull:true})
@@ -85,6 +93,8 @@ const SearchModal = () => {
         location,
         onNext
     ])
+
+
 
     const secondaryActionLabel = useMemo(()=>{
         if(step===STEPS.LOCATION){
@@ -105,14 +115,57 @@ const SearchModal = () => {
               <Map center={location?.latlng}/>
         </div>
     )
+
+    if(step ==STEPS.DATE){
+        bodyContent =(
+            <div className=' flex flex-col gap-8'>
+                <Heading
+                  title='where do you plan to go?'
+                  subtitle='Make sure everyone is free!'
+                  />    
+                  <Calender
+                   value={dateRange}
+                   onChange={(value)=>setDateRange(value.selection)}
+                   />
+            </div>
+        )
+    }
+
+    if(step== STEPS.INFO){
+        bodyContent = (
+            <div className=' flex flex-col gap-8'>
+                <Heading title='More information' subtitle='FInd your perfect place'/>
+                <Counter 
+                title='Guests'
+                subtitle='How many guests are coming?'
+                value={guestCount}
+                onChange={(value)=>setGuestCount(value)} 
+                />  
+                 <Counter 
+                title='Rooms'
+                subtitle='How many rooms do you need?'
+                value={roomCount}
+                onChange={(value)=>setRoomCount(value)} 
+                />  
+                 <Counter 
+                title='Bathrooms'
+                subtitle='How many bathrooms do you need?'
+                value={bathroomCount}
+                onChange={(value)=>setBathroomCount(value)} 
+                />  
+            </div>
+        )
+    }
   return (
    <Modal
     isOpen={searchModal.isOpen}
     onClose={searchModal.onClose}
-    onSubmit={searchModal.onOpen}
+    onSubmit={onSubmit}
     title='filters'
-    actionLabel='Search'
+    actionLabel={actionLabel}
     body={bodyContent}
+    secondaryAction={step===STEPS.LOCATION?undefined:onBack}
+    secondaryActionLabel={secondaryActionLabel}
    />
 
    

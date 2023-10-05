@@ -1,10 +1,46 @@
 'use client'
 import useSearchModal from '@/app/hooks/useSearchModal'
-import React from 'react'
+import React, { useMemo } from 'react'
 import {BiSearch} from 'react-icons/bi'
-
+import {useSearchParams} from 'next/navigation'
+import { useCountires } from '@/app/hooks/useCountries'
+import { differenceInDays } from 'date-fns'
 const Search = () => {
   const searchModal = useSearchModal()
+  const params  = useSearchParams()
+ const{getByValue} = useCountires()
+
+ const locationValue = params?.get('locationValue')
+ const startDate = params?.get('startDate')
+ const endDate = params?.get('endDate')
+ const guestCount = params?.get('guestCount')
+
+ const locationLabel = useMemo(()=>{
+  if(locationValue){
+    return getByValue(locationValue as string)?.label
+  }
+  return 'Anywhere'
+ },[locationValue,getByValue])
+
+ const durationLabel = useMemo(()=>{
+  if(startDate && endDate){
+    const start = new Date(startDate)
+    const end = new Date(endDate)
+    let diff = differenceInDays(start,end)
+    if(diff===0){
+      diff=1
+    }
+    return `${diff} days`
+  }
+  return 'Any week'
+ },[startDate,endDate])
+
+ const guestLabel = useMemo(()=>{
+  if(guestCount){
+    return `${guestCount} guests`
+  }
+  return 'Add Guests'
+ },[guestCount])
   return (
     <div
     onClick={searchModal.onOpen}
@@ -36,7 +72,7 @@ const Search = () => {
               px-6
              '
             >
-             Anywhere
+             {locationLabel}
             </div>
 
             <div
@@ -51,7 +87,7 @@ const Search = () => {
              text-center
              '
             >
-             Any week
+            {durationLabel}
             </div>
 
             <div
@@ -67,7 +103,7 @@ const Search = () => {
              items-center
              '
             >
-             Add guests
+             {guestLabel}
             </div>
             <div
              className='

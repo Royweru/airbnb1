@@ -86,7 +86,7 @@ const RentModal = () => {
             .then(()=>{
                toast.success('You successfully added your listing')
                router.refresh()
-               reset
+               reset()
                setStep(STEPS.CATEGORY)
                rentModal.onClose()
             })
