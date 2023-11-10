@@ -1,6 +1,6 @@
 'use client'
 import React, { useCallback, useState } from 'react'
-import { SafeReservation, SafeUser } from '../types'
+import { SafeReservation, SafeUser } from '../../types'
 
 import Heading from '../components/Heading'
 import Container from '../components/Container'

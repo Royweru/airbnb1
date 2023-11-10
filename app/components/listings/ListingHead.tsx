@@ -1,5 +1,5 @@
 import { useCountires } from '@/app/hooks/useCountries'
-import { SafeUser } from '@/app/types'
+import { SafeUser } from '@/types'
 import React from 'react'
 import Heading from '../Heading'
 import Image from 'next/image'

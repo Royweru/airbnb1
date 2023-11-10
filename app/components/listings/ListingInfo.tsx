@@ -1,5 +1,5 @@
 import React from "react";
-import { SafeUser } from "@/app/types";
+import { SafeUser } from "@/types";
 import { IconType } from "react-icons";
 import { useCountires } from "@/app/hooks/useCountries";
 import Avatar from "../Avatar";

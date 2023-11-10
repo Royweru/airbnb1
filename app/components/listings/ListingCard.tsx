@@ -2,11 +2,11 @@
 
 import React, { useCallback, useMemo } from "react";
 
-import { SafeReservation, SafeUser } from "@/app/types";
+import { SafeReservation, SafeUser } from "@/types";
 import { useRouter } from "next/navigation";
 import { useCountires } from "@/app/hooks/useCountries";
 import Image from "next/image";
-import { SafeListing } from "@/app/types";
+import { SafeListing } from "@/types";
 import HeartButton from "../HeartButton";
 import Button from "../Button"
 interface ListingCardProps {

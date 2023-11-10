@@ -4,7 +4,7 @@ import Logo from './Logo'
 import Search from './Search'
 import Usermenu from './Usermenu'
 import Categories from './Categories'
-import { SafeUser } from '@/app/types'
+import { SafeUser } from '@/types'
 interface NavbarProps{
   currentUser:SafeUser | null,
 }
