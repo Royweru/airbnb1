@@ -37,7 +37,7 @@ const Home =async ({searchParams}:HomeProps) => {
        2xl:grid-cols-6
        gap-8
       '>
-        {listings.map(listing=>(
+        {listings.map((listing:any)=>(
           <ListingCard 
            key ={listing.id}
            data = {listing}
