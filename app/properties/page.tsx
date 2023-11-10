@@ -1,10 +1,10 @@
 
 import getCurrentUser from '@/session/GetCurrentUser'
 import React from 'react'
-import { toast } from 'react-hot-toast'
+
 import Clientonly from '../components/Clientonly'
 import EmptyState from '../components/EmptyState'
-import getReservations from '@/actions/getReservations'
+
 import PropertiesClient from './PropertiesClient'
 import getListings from '@/actions/getListings'
 

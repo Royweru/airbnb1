@@ -5,7 +5,7 @@ import useLoginModal from "@/app/hooks/useLoginModal";
 
 import ListingReservation from "@/app/components/listings/ListingReservation";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
-import { Reservation } from "@prisma/client";
+
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
