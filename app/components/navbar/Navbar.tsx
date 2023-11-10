@@ -4,7 +4,6 @@ import Logo from './Logo'
 import Search from './Search'
 import Usermenu from './Usermenu'
 import Categories from './Categories'
-import { User } from '@prisma/client'
 import { SafeUser } from '@/app/types'
 interface NavbarProps{
   currentUser:SafeUser | null,

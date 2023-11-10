@@ -5,7 +5,6 @@ import React, { useCallback, useMemo } from "react";
 import { SafeReservation, SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useCountires } from "@/app/hooks/useCountries";
-import { format } from "date-fns";
 import Image from "next/image";
 import { SafeListing } from "@/app/types";
 import HeartButton from "../HeartButton";
