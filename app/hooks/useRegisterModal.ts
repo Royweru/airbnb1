@@ -7,7 +7,6 @@ interface RegisterModalStore{
 }
 
 
-import React from 'react'
 
 const useRegisterModal = create<RegisterModalStore>((set)=>({
     isOpen:false,
